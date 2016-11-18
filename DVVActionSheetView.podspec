@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
 s.name         = 'DVVActionSheetView'
 s.summary      = '自定义的ActionSheetView，解决了UIAlertController在iPad和iPhone上使用方式不一致的问题。'
-s.version      = '1.0.0'
+s.version      = '1.0.1'
 s.license      = { :type => 'MIT', :file => 'LICENSE' }
 s.authors      = { 'devdawei' => '2549129899@qq.com' }
 s.homepage     = 'https://github.com/devdawei'
