@@ -296,6 +296,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     size.width -= margin * 2;
     if (iPhoneX) {
         if ([UIScreen mainScreen].bounds.size.width < [UIScreen mainScreen].bounds.size.height) {
+            size.width -= margin * 2; // 竖屏情况下的iPhone X，需要更大的边距
             size.height -= 44 + 34;
         } else {
             size.height -= (34 - 5 - 8) + 34; // 5是iPhone X的功能条高度，8是iPhone X的功能条距离屏幕底部的高度
