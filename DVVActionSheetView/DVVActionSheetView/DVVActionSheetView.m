@@ -280,6 +280,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (void)configUI
 {
+    BOOL iPhoneX = NO;
+    if ([UIScreen mainScreen].bounds.size.width == 812 ||
+        [UIScreen mainScreen].bounds.size.height == 812) {
+        // iPhone X
+        iPhoneX = YES;
+    }
+    
     CGFloat margin = 8;
     
     CGSize size = self.bounds.size;
@@ -287,7 +294,15 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     if (size.width > 414) size.width = 414;
     // 减去边距
     size.width -= margin * 2;
-    size.height -= margin * 2;
+    if (iPhoneX) {
+        if ([UIScreen mainScreen].bounds.size.width < [UIScreen mainScreen].bounds.size.height) {
+            size.height -= 44 + 34;
+        } else {
+            size.height -= (34 - 5 - 8) + 34; // 5是iPhone X的功能条高度，8是iPhone X的功能条距离屏幕底部的高度
+        }
+    } else {
+        size.height -= margin * 2;
+    }
     
     CGFloat titleHeight = [DVVActionSheetView heightWithString:_titleLabel.text width:size.width - kCornerRadius*2 font:_titleLabel.font];
     if (0 != titleHeight) titleHeight += margin;
@@ -330,13 +345,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     if (_didConfigUI)
     {
-        _containerView.frame = CGRectMake((screenSize.width - size.width) / 2.0, screenSize.height - containerHeight - margin, size.width, containerHeight);
+        _containerView.frame = CGRectMake((screenSize.width - size.width) / 2.0, screenSize.height - containerHeight - (iPhoneX ? 34 : margin), size.width, containerHeight);
     }
     else
     {
         _containerView.frame = CGRectMake((screenSize.width - size.width) / 2.0, screenSize.height, size.width, containerHeight);
         [UIView animateWithDuration:0.25 animations:^{
-            _containerView.frame = CGRectMake((screenSize.width - size.width) / 2.0, screenSize.height - containerHeight - margin, size.width, containerHeight);
+            _containerView.frame = CGRectMake((screenSize.width - size.width) / 2.0, screenSize.height - containerHeight - (iPhoneX ? 34 : margin), size.width, containerHeight);
         }];
         _didConfigUI = YES;
     }
