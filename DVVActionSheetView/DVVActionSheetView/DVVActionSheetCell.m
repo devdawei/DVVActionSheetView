@@ -1,20 +1,14 @@
 //
-//  DVVAlertCell.m
+//  DVVActionSheetCell.m
 //  DVVActionSheetView <https://github.com/devdawei/DVVActionSheetView.git>
 //
 //  Created by 大威 on 2016/9/25.
 //  Copyright © 2016年 devdawei. All rights reserved.
 //
 
-#import "DVVAlertCell.h"
+#import "DVVActionSheetCell.h"
 
-@implementation DVVAlertCell
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    // Initialization code
-}
+@implementation DVVActionSheetCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

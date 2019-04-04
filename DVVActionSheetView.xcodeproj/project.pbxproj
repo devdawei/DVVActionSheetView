@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		634973132255A89B00DBEE20 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634973122255A89B00DBEE20 /* TestViewController.m */; };
 		D998CB031DC6E63D0018BB55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D998CB021DC6E63D0018BB55 /* main.m */; };
 		D998CB061DC6E63D0018BB55 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D998CB051DC6E63D0018BB55 /* AppDelegate.m */; };
 		D998CB091DC6E63D0018BB55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D998CB081DC6E63D0018BB55 /* ViewController.m */; };
@@ -16,7 +17,7 @@
 		D998CB1C1DC6E63D0018BB55 /* DVVActionSheetViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D998CB1B1DC6E63D0018BB55 /* DVVActionSheetViewTests.m */; };
 		D998CB2E1DC6E67D0018BB55 /* DVVActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = D998CB281DC6E67D0018BB55 /* DVVActionSheetView.m */; };
 		D998CB2F1DC6E67D0018BB55 /* DVVAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D998CB2A1DC6E67D0018BB55 /* DVVAlertAction.m */; };
-		D998CB301DC6E67D0018BB55 /* DVVAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D998CB2C1DC6E67D0018BB55 /* DVVAlertCell.m */; };
+		D998CB301DC6E67D0018BB55 /* DVVActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D998CB2C1DC6E67D0018BB55 /* DVVActionSheetCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		634973112255A89A00DBEE20 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		634973122255A89B00DBEE20 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		D998CAFE1DC6E63D0018BB55 /* DVVActionSheetView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVVActionSheetView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D998CB021DC6E63D0018BB55 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D998CB041DC6E63D0018BB55 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,8 +50,8 @@
 		D998CB281DC6E67D0018BB55 /* DVVActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVActionSheetView.m; sourceTree = "<group>"; };
 		D998CB291DC6E67D0018BB55 /* DVVAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVAlertAction.h; sourceTree = "<group>"; };
 		D998CB2A1DC6E67D0018BB55 /* DVVAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVAlertAction.m; sourceTree = "<group>"; };
-		D998CB2B1DC6E67D0018BB55 /* DVVAlertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVAlertCell.h; sourceTree = "<group>"; };
-		D998CB2C1DC6E67D0018BB55 /* DVVAlertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVAlertCell.m; sourceTree = "<group>"; };
+		D998CB2B1DC6E67D0018BB55 /* DVVActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVVActionSheetCell.h; sourceTree = "<group>"; };
+		D998CB2C1DC6E67D0018BB55 /* DVVActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVVActionSheetCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				D998CB051DC6E63D0018BB55 /* AppDelegate.m */,
 				D998CB071DC6E63D0018BB55 /* ViewController.h */,
 				D998CB081DC6E63D0018BB55 /* ViewController.m */,
+				634973112255A89A00DBEE20 /* TestViewController.h */,
+				634973122255A89B00DBEE20 /* TestViewController.m */,
 				D998CB0A1DC6E63D0018BB55 /* Main.storyboard */,
 				D998CB0D1DC6E63D0018BB55 /* Assets.xcassets */,
 				D998CB0F1DC6E63D0018BB55 /* LaunchScreen.storyboard */,
@@ -128,8 +133,8 @@
 				D998CB281DC6E67D0018BB55 /* DVVActionSheetView.m */,
 				D998CB291DC6E67D0018BB55 /* DVVAlertAction.h */,
 				D998CB2A1DC6E67D0018BB55 /* DVVAlertAction.m */,
-				D998CB2B1DC6E67D0018BB55 /* DVVAlertCell.h */,
-				D998CB2C1DC6E67D0018BB55 /* DVVAlertCell.m */,
+				D998CB2B1DC6E67D0018BB55 /* DVVActionSheetCell.h */,
+				D998CB2C1DC6E67D0018BB55 /* DVVActionSheetCell.m */,
 			);
 			path = DVVActionSheetView;
 			sourceTree = "<group>";
@@ -178,7 +183,7 @@
 		D998CAF61DC6E63D0018BB55 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = devdawei;
 				TargetAttributes = {
 					D998CAFD1DC6E63D0018BB55 = {
@@ -194,7 +199,7 @@
 			};
 			buildConfigurationList = D998CAF91DC6E63D0018BB55 /* Build configuration list for PBXProject "DVVActionSheetView" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -237,7 +242,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D998CB091DC6E63D0018BB55 /* ViewController.m in Sources */,
-				D998CB301DC6E67D0018BB55 /* DVVAlertCell.m in Sources */,
+				D998CB301DC6E67D0018BB55 /* DVVActionSheetCell.m in Sources */,
+				634973132255A89B00DBEE20 /* TestViewController.m in Sources */,
 				D998CB2E1DC6E67D0018BB55 /* DVVActionSheetView.m in Sources */,
 				D998CB2F1DC6E67D0018BB55 /* DVVAlertAction.m in Sources */,
 				D998CB061DC6E63D0018BB55 /* AppDelegate.m in Sources */,
@@ -287,20 +293,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -335,20 +351,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -378,6 +404,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DVVActionSheetView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devdawei.DVVActionSheetView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -389,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DVVActionSheetView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devdawei.DVVActionSheetView;
 				PRODUCT_NAME = "$(TARGET_NAME)";

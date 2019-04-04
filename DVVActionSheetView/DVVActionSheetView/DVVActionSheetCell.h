@@ -1,5 +1,5 @@
 //
-//  DVVAlertCell.h
+//  DVVActionSheetCell.h
 //  DVVActionSheetView <https://github.com/devdawei/DVVActionSheetView.git>
 //
 //  Created by 大威 on 2016/9/25.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DVVAlertCell : UITableViewCell
+@interface DVVActionSheetCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *bottomLineImageView;
 

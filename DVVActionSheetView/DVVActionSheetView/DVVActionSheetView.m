@@ -7,13 +7,13 @@
 //
 
 #import "DVVActionSheetView.h"
-#import "DVVAlertCell.h"
+#import "DVVActionSheetCell.h"
 
 @interface DVVActionSheetView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 
-@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) UIView *contentView;
 #ifdef __IPHONE_8_0
 @property (nonatomic, strong) UIVisualEffectView *blurEffectView;
 #endif
@@ -34,8 +34,8 @@
 
 @end
 
-CGFloat const kCellHeight = 44;
-CGFloat const kCornerRadius = 14;
+CGFloat const kDVVActionSheetViewCellHeight = 50;
+CGFloat const kDVVActionSheetViewCornerRadius = 14;
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @implementation DVVActionSheetView
@@ -80,9 +80,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (void)initSelf
 {
-    self.containerView.layer.masksToBounds = YES;
-    self.containerView.layer.cornerRadius = kCornerRadius;
-    
+    self.contentView.layer.masksToBounds = YES;
+    self.contentView.layer.cornerRadius = kDVVActionSheetViewCornerRadius;
 }
 
 - (void)layoutSubviews
@@ -121,24 +120,24 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     [window addSubview:self];
     [self addSubview:self.backgroundImageView];
-    [self addSubview:self.containerView];
+    [self addSubview:self.contentView];
     
     self.translatesAutoresizingMaskIntoConstraints = NO;
     if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0)
     {
-        _containerView.backgroundColor = [UIColor clearColor];
+        _contentView.backgroundColor = [UIColor clearColor];
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
         _blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         _blurEffectView.userInteractionEnabled = NO;
-        [_containerView addSubview:_blurEffectView];
+        [_contentView addSubview:_blurEffectView];
     }
     
-    [_containerView addSubview:self.headerView];
+    [_contentView addSubview:self.headerView];
     [_headerView addSubview:self.titleLabel];
     [_headerView addSubview:self.messageLabel];
     [_headerView addSubview:self.headerBottomLineImageView];
-    [_containerView addSubview:self.tableView];
-    [_containerView addSubview:self.footerView];
+    [_contentView addSubview:self.tableView];
+    [_contentView addSubview:self.footerView];
     [_footerView addSubview:self.cancelButton];
     [_footerView addSubview:self.footerTopLineImageView];
     
@@ -160,11 +159,11 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0)
     {
         _blurEffectView.translatesAutoresizingMaskIntoConstraints = NO;
-        NSLayoutConstraint *t = [NSLayoutConstraint constraintWithItem:_blurEffectView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_containerView attribute:NSLayoutAttributeTop multiplier:1 constant:0];
-        NSLayoutConstraint *l = [NSLayoutConstraint constraintWithItem:_blurEffectView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_containerView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
-        NSLayoutConstraint *b = [NSLayoutConstraint constraintWithItem:_blurEffectView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-        NSLayoutConstraint *r = [NSLayoutConstraint constraintWithItem:_blurEffectView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_containerView attribute:NSLayoutAttributeRight multiplier:1 constant:0];
-        [_containerView addConstraints:@[ t, l, b, r ]];
+        NSLayoutConstraint *t = [NSLayoutConstraint constraintWithItem:_blurEffectView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+        NSLayoutConstraint *l = [NSLayoutConstraint constraintWithItem:_blurEffectView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+        NSLayoutConstraint *b = [NSLayoutConstraint constraintWithItem:_blurEffectView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+        NSLayoutConstraint *r = [NSLayoutConstraint constraintWithItem:_blurEffectView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeRight multiplier:1 constant:0];
+        [_contentView addConstraints:@[ t, l, b, r ]];
     }
     
     _headerBottomLineImageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -182,11 +181,11 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     [_footerView addConstraints:@[ ftlivH, ftlivT, ftlivL, ftlivR ]];
     
     [UIView animateWithDuration:0.25 animations:^{
-        _backgroundImageView.alpha = 1;
+        self.backgroundImageView.alpha = 1;
     }];
     
     /* 调试时打开 */
-//    self.containerView.backgroundColor = [UIColor redColor];
+//    self.contentView.backgroundColor = [UIColor redColor];
 //    
 //    self.headerView.backgroundColor = [UIColor blackColor];
 //    self.titleLabel.backgroundColor = [UIColor orangeColor];
@@ -226,10 +225,10 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (void)removeSelf
 {
-    CGRect frame = _containerView.frame;
+    CGRect frame = _contentView.frame;
     [UIView animateWithDuration:0.25 animations:^{
-        _backgroundImageView.alpha = 0;
-        _containerView.frame = CGRectMake(frame.origin.x, [UIScreen mainScreen].bounds.size.height, frame.size.width, frame.size.height);
+        self.backgroundImageView.alpha = 0;
+        self.contentView.frame = CGRectMake(frame.origin.x, [UIScreen mainScreen].bounds.size.height, frame.size.width, frame.size.height);
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
@@ -244,19 +243,19 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return kDVVActionSheetViewCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DVVAlertCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    DVVActionSheetCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DVVAlertCell *tmpCell = (DVVAlertCell *)cell;
+    DVVActionSheetCell *tmpCell = (DVVActionSheetCell *)cell;
     
     tmpCell.textLabel.text = _actionArray[indexPath.row].title;
     
@@ -280,34 +279,33 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (void)configUI
 {
-    BOOL iPhoneX = NO;
-    if ([UIScreen mainScreen].bounds.size.width == 812 ||
-        [UIScreen mainScreen].bounds.size.height == 812) {
-        // iPhone X
-        iPhoneX = YES;
+    UIEdgeInsets safeAreaInsets = UIEdgeInsetsZero;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        safeAreaInsets = mainWindow.safeAreaInsets;
     }
+    
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGSize selfSize = self.bounds.size;
     
     CGFloat margin = 8;
-    
-    CGSize size = self.bounds.size;
-    CGSize screenSize = size;
+    CGSize size = selfSize;
     if (size.width > 414) size.width = 414;
-    // 减去边距
+    // 宽度减去边距
     size.width -= margin * 2;
-    if (iPhoneX) {
-        if ([UIScreen mainScreen].bounds.size.width < [UIScreen mainScreen].bounds.size.height) {
-            size.width -= margin * 2; // 竖屏情况下的iPhone X，需要更大的边距
-            size.height -= 44 + 34;
-        } else {
-            size.height -= (34 - 5 - 8) + 34; // 5是iPhone X的功能条高度，8是iPhone X的功能条距离屏幕底部的高度
-        }
-    } else {
-        size.height -= margin * 2;
+    // 如果底部有安全区，则应该是异性屏幕，并且屏幕为竖屏，异性屏幕需要设置更大的边距
+    if (safeAreaInsets.bottom > 0) {
+        size.width -= margin * 2;
     }
+    // 高度处理安全区域
+    CGFloat statusBarHeight = screenSize.width > screenSize.height ? 0 : (safeAreaInsets.top ?: 20);
+    // iPhone X的功能条高度：5，iPhone X的功能条距离屏幕底部的高度：8
+    CGFloat bottomInsert = safeAreaInsets.bottom ? 8 + 5 + 8 : margin;
+    size.height -= (statusBarHeight + 44 + margin) + bottomInsert;
     
-    CGFloat titleHeight = [DVVActionSheetView heightWithString:_titleLabel.text width:size.width - kCornerRadius*2 font:_titleLabel.font];
+    CGFloat titleHeight = [DVVActionSheetView heightWithString:_titleLabel.text width:size.width - kDVVActionSheetViewCornerRadius*2 font:_titleLabel.font];
     if (0 != titleHeight) titleHeight += margin;
-    CGFloat messageHeight = [DVVActionSheetView heightWithString:_messageLabel.text width:size.width - kCornerRadius*2 font:_messageLabel.font];;
+    CGFloat messageHeight = [DVVActionSheetView heightWithString:_messageLabel.text width:size.width - kDVVActionSheetViewCornerRadius*2 font:_messageLabel.font];;
     if (0 != messageHeight) messageHeight += margin;
     CGFloat titleTopMargin = 0;
     CGFloat titleBottomMargin = 0;
@@ -336,8 +334,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     _headerView.frame = CGRectMake(0, 0, size.width, headerHeight);
     
-    _titleLabel.frame = CGRectMake(kCornerRadius/2.0, titleTopMargin, size.width - kCornerRadius, titleHeight);
-    _messageLabel.frame = CGRectMake(kCornerRadius/2.0, CGRectGetMaxY(_titleLabel.frame) + titleBottomMargin + messageTopMargin, size.width - kCornerRadius, messageHeight);
+    _titleLabel.frame = CGRectMake(kDVVActionSheetViewCornerRadius/2.0, titleTopMargin, size.width - kDVVActionSheetViewCornerRadius, titleHeight);
+    _messageLabel.frame = CGRectMake(kDVVActionSheetViewCornerRadius/2.0, CGRectGetMaxY(_titleLabel.frame) + titleBottomMargin + messageTopMargin, size.width - kDVVActionSheetViewCornerRadius, messageHeight);
     
     _tableView.frame = CGRectMake(0, headerHeight, size.width, tableHeight);
     
@@ -346,14 +344,14 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     if (_didConfigUI)
     {
-        _containerView.frame = CGRectMake((screenSize.width - size.width) / 2.0, screenSize.height - containerHeight - (iPhoneX ? 34 : margin), size.width, containerHeight);
+        _contentView.frame = CGRectMake((selfSize.width - size.width) / 2.0, selfSize.height - containerHeight - bottomInsert, size.width, containerHeight);
     }
     else
     {
-        _containerView.frame = CGRectMake((screenSize.width - size.width) / 2.0, screenSize.height, size.width, containerHeight);
-        [UIView animateWithDuration:0.25 animations:^{
-            _containerView.frame = CGRectMake((screenSize.width - size.width) / 2.0, screenSize.height - containerHeight - (iPhoneX ? 34 : margin), size.width, containerHeight);
-        }];
+        _contentView.frame = CGRectMake((selfSize.width - size.width) / 2.0, selfSize.height, size.width, containerHeight);
+        [UIView animateWithDuration:0.25 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.contentView.frame = CGRectMake((selfSize.width - size.width) / 2.0, selfSize.height - containerHeight - bottomInsert, size.width, containerHeight);
+        } completion:nil];
         _didConfigUI = YES;
     }
     
@@ -376,13 +374,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     return _backgroundImageView;
 }
 
-- (UIView *)containerView
+- (UIView *)contentView
 {
-    if (!_containerView) {
-        _containerView = [UIView new];
-        _containerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.95];
+    if (!_contentView) {
+        _contentView = [UIView new];
+        _contentView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.95];
     }
-    return _containerView;
+    return _contentView;
 }
 
 - (UITableView *)tableView
@@ -395,7 +393,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         _tableView.bounces = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        [_tableView registerClass:NSClassFromString(NSStringFromClass([DVVAlertCell class])) forCellReuseIdentifier:kCellIdentifier];
+        [_tableView registerClass:NSClassFromString(NSStringFromClass([DVVActionSheetCell class])) forCellReuseIdentifier:kCellIdentifier];
     }
     return _tableView;
 }
